@@ -67,7 +67,9 @@ module.exports = (function () {
         };
         if ((accelerationChange.x + accelerationChange.y + accelerationChange.z > sensitivity) && (accelerationChange.x + accelerationChange.y + accelerationChange.z < sensitivity_max)) {
             // Shake detected
-            document.getElementById('counter').innerHTML += (accelerationChange.x + accelerationChange.y + accelerationChange.z) + '<br>';
+            if (document.getElementById('counter')) {
+                document.getElementById('counter').innerHTML += (accelerationChange.x + accelerationChange.y + accelerationChange.z) + '<br>';
+            }
             shakeCallBack();
         }
     };
