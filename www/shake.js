@@ -8,7 +8,6 @@ module.exports = (function () {
     var options = {
         frequency: 300
     };
-alert('a');
     var previousAcceleration = {
         x: null,
         y: null,
@@ -61,7 +60,7 @@ alert('a');
             y: acceleration.y,
             z: acceleration.z
         };
-
+document.getElementById('counter').innerHTML += (accelerationChange.x + accelerationChange.y + accelerationChange.z) + '<br>';
         if (accelerationChange.x + accelerationChange.y + accelerationChange.z > sensitivity) {
             // Shake detected
             shakeCallBack();
