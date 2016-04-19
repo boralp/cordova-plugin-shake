@@ -60,9 +60,9 @@ module.exports = (function () {
             y: acceleration.y,
             z: acceleration.z
         };
-document.getElementById('counter').innerHTML += (accelerationChange.x + accelerationChange.y + accelerationChange.z) + '<br>';
         if (accelerationChange.x + accelerationChange.y + accelerationChange.z > sensitivity) {
             // Shake detected
+            document.getElementById('counter').innerHTML += (accelerationChange.x + accelerationChange.y + accelerationChange.z) + '<br>';
             shakeCallBack();
         }
     };
