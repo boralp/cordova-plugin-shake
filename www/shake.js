@@ -8,7 +8,7 @@ module.exports = (function () {
     var options = {
         frequency: 300
     };
-
+alert('a');
     var previousAcceleration = {
         x: null,
         y: null,
