@@ -16,15 +16,20 @@ module.exports = (function () {
 
     var shakeCallBack = null;
     var sensitivity = 30;
-
+    var sensitivity_max = 50;
+    
     // Start watching the accelerometer for a shake gesture
-    shake.startWatch = function (onShake, _sensitivity, onError) {
+    shake.startWatch = function (onShake, _sensitivity, _sensitivity_max, onError) {
         if (typeof (onShake) !== "function") {
             return;
         }
 
         if (typeof (_sensitivity) === "number") {
             sensitivity = _sensitivity;
+        }
+        
+        if (typeof (_sensitivity_max) === "number") {
+            sensitivity_max = _sensitivity_max;
         }
 
         shakeCallBack = debounce(onShake);
@@ -60,7 +65,7 @@ module.exports = (function () {
             y: acceleration.y,
             z: acceleration.z
         };
-        if (accelerationChange.x + accelerationChange.y + accelerationChange.z > sensitivity) {
+        if ((accelerationChange.x + accelerationChange.y + accelerationChange.z > sensitivity) && (accelerationChange.x + accelerationChange.y + accelerationChange.z < sensitivity_max)) {
             // Shake detected
             document.getElementById('counter').innerHTML += (accelerationChange.x + accelerationChange.y + accelerationChange.z) + '<br>';
             shakeCallBack();
